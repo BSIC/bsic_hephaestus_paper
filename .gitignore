@@ -1,0 +1,5 @@
+.pypirc
+.env
+dist
+**/__pycache__
+**/build
