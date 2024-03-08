@@ -1,31 +1,9 @@
-import os
-
 import pandas as pd
-import wrds
-from dotenv import load_dotenv
+from wrds_api import connect_wrds
 
 
-# create pgpass file
-def create_pgpass_file():
-    load_dotenv()
-
-    username, password = os.getenv("WRDS_USERNAME"), os.getenv("WRDS_PASSWORD")
-    pgpass_text = f"wrds-pgdata.wharton.upenn.edu:9737:wrds:{username}:{password}"
-
-    filepath = os.path.expanduser("~/.pgpass")
-
-    if os.path.exists(filepath):
-        return
-
-    with open(filepath, "w") as f:
-        f.write(pgpass_text)
-        os.chmod(filepath, 256)
-
-
-def get_constituents():
-    create_pgpass_file()
-
-    db = wrds.Connection(wrds_username="benjaminjilma")
+def get_sp500_constituents():
+    db = connect_wrds()
 
     sp500: pd.DataFrame = db.raw_sql(
         """
