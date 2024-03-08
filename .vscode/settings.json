@@ -6,8 +6,8 @@
     "editor.formatOnSave": true,
     "editor.formatOnSaveMode": "file",
     "editor.codeActionsOnSave": {
-        "source.organizeImports": true,
-        "files.trimTrailingWhitespace": true,
+        "source.organizeImports": "explicit",
+        "files.trimTrailingWhitespace": "explicit"
     },
     "vim.smartRelativeLine": true,
     "workbench.colorCustomizations": {
